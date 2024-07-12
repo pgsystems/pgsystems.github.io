@@ -5,10 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="[PG] Systems PNG Web NEW.png">
     <link rel="stylesheet" href="styles.css">
-    <title>[PG] Systems</title>
+    <title>Enregistrar-me</title>
 </head>
 <body>
-    <center-align><p><b>Benvingut a la pàgina web de</b></p></center-align>
-    <img src="[PG] Systems.png">
+    <h1>Enregistrar-me a [PG] Systems</h1>
+    <form method="get" action="">
+      Nombre: <input type="text" maxlenght="50" id="nombre" name="Nombre:">
+      <br/>
+      Apellidos: <input type="text" maxlenght="50" id="apellidos" name="Apellidos:">
+      <br/>
+      Sexo:
+      <input type="radio" id="hombre" name="Sexo: Hombre">Hombre
+      <input type="radio" id="mujer" name="Sexo: Mujer">Mujer
+      <br/>
+      Correo electrónico: <input type="email" id="email" name="Correo electronico:">
+      <br/>
+      Región:
+      <select id="region" name="region">
+      <option>Africa
+      <option>Antarctica
+      <option>America
+      <option>Asia
+      <option>Australia
+      <option>Europe
+        </select>
+      <br/>
+      Descripción: <textarea id="descripcion" name="descripcion" cols=60 rows=6></textarea>
+      <br/>
+      <input type="checkbox" id="publi" name="Quiero recibir publicidad y/o noticias.">Quiero recibir publicidad y/o noticias de [PG] Systems
+      <br/>
+      <input type="checkbox" id="acepto" name="He leído y acepto las condiciones del programa y las regulaciones en la protección de datos.">He leído y acepto las condiciones del programa y las regulaciones en la protección de datos
+    <br/>
+      <input id="enviar" type="submit">
+    </form>
 </body>
 </html>
