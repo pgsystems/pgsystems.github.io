@@ -1,43 +1,63 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="lxqpLMeDgSCyPyZijLDac1X-KcOpresQennOVibnqWs" />
     <link rel="icon" href="[PG] Systems PNG Web NEW.png">
+    <title>[PG] Systems</title>
     <link rel="stylesheet" href="styles.css">
-    <title>Enregistrar-me</title>
 </head>
 <body>
-    <h1>Enregistrar-me a [PG] Systems</h1>
-    <form method="get" action="mailto:gmalvaro2012@gmail.com">
-      Nombre: <input type="text" maxlenght="50" id="nombre" name="Nombre:">
-      <br/>
-      Apellidos: <input type="text" maxlenght="50" id="apellidos" name="Apellidos:">
-      <br/>
-      Sexo:
-      <input type="radio" id="hombre" name="Sexo: Hombre">Hombre
-      <input type="radio" id="mujer" name="Sexo: Mujer">Mujer
-      <br/>
-      Correo electrónico: <input type="email" id="email" name="Correo electronico:">
-      <br/>
-      Región:
-      <select id="region" name="region">
-      <option>Africa
-      <option>Antarctica
-      <option>America
-      <option>Asia
-      <option>Australia
-      <option>Europa
-        </select>
-      <br/>
-      Descripción: <textarea id="descripcion" name="descripcion" cols=60 rows=6></textarea>
-      <br/>
-      <input type="checkbox" id="publi" name="Quiero recibir publicidad y/o noticias.">Quiero recibir publicidad y/o noticias de [PG] Systems
-      <br/>
-      <input type="checkbox" id="acepto" name="He leído y acepto las condiciones del programa y las regulaciones en la protección de datos.">He leído y acepto las condiciones del programa y las regulaciones en la protección de datos
-    <br/>
-      <input id="enviar" type="submit">
-    </form>
+    <header>
+        <div class="container">
+            <h1>Mi Empresa de Software</h1>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio">
+        <div class="container">
+            <h2>Bienvenido a Mi Empresa de Software</h2>
+            <p>Ofrecemos las mejores soluciones de software.</p>
+            <button onclick="showAlert()">Saber Más</button>
+        </div>
+    </section>
+
+    <section id="servicios">
+        <div class="container">
+            <h2>Nuestros Servicios</h2>
+            <p>Descripción de servicios.</p>
+        </div>
+    </section>
+
+    <section id="sobre-nosotros">
+        <div class="container">
+            <h2>Sobre Nosotros</h2>
+            <p>Información sobre la empresa.</p>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <div class="container">
+            <h2>Contacto</h2>
+            <p>Formulario de contacto.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Mi Empresa de Software. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
