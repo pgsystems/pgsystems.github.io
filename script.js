@@ -5,10 +5,6 @@ const ROLES = {
     ADMIN: 3
 };
 
-let users = JSON.parse(localStorage.getItem('users')) || [
-    { username: 'admin', password: 'admin123', role: ROLES.ADMIN, banned: false },
-];
-
 let articles = JSON.parse(localStorage.getItem('articles')) || [
     { title: 'Bienvenido', content: 'Bienvenido a TechnoWiki.', author: 'admin', history: [] }
 ];
