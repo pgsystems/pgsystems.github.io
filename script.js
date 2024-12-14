@@ -10,7 +10,14 @@ let users = JSON.parse(localStorage.getItem('users')) || [
 ];
 
 let articles = JSON.parse(localStorage.getItem('articles')) || [
-    { title: 'Bienvenido', content: 'Bienvenido a TechnoWiki.', author: 'admin', history: [] }
+    { 
+        title: 'Bienvenido', 
+        content: 'Bienvenido a TechnoWiki.', 
+        author: 'admin', 
+        history: [],
+        // Nuevo campo para rastrear editores de cada versión
+        editorHistory: [] 
+    }
 ];
 
 let currentUser = null;
@@ -91,14 +98,45 @@ function updateUserInterface() {
 
 function updateVersionSelect() {
     const versionSelect = document.getElementById('versionSelect');
+    const versionEditorInfo = document.getElementById('versionEditorInfo');
     versionSelect.innerHTML = '';
+    versionEditorInfo.innerHTML = '';
 
-    articles[currentArticleIndex].history.forEach((_, index) => {
+    const article = articles[currentArticleIndex];
+    
+    // Agregar opción para la versión actual
+    const currentVersionOption = document.createElement('option');
+    currentVersionOption.value = 'current';
+    currentVersionOption.textContent = 'Versión Actual';
+    versionSelect.appendChild(currentVersionOption);
+
+    // Agregar versiones del historial
+    article.history.forEach((_, index) => {
         const option = document.createElement('option');
         option.value = index;
         option.textContent = `Versión ${index + 1}`;
         versionSelect.appendChild(option);
     });
+}
+
+function showVersionEditorInfo(version) {
+    const versionEditorInfo = document.getElementById('versionEditorInfo');
+    const article = articles[currentArticleIndex];
+
+    if (version === 'current') {
+        // Información de la versión actual
+        versionEditorInfo.innerHTML = `
+            <p><strong>Autor Original:</strong> ${article.author}</p>
+            <p><strong>Última Edición:</strong> ${article.author}</p>
+        `;
+    } else {
+        // Información de versiones históricas
+        const editorInfo = article.editorHistory[version] || { editor: 'Desconocido', date: 'Fecha no disponible' };
+        versionEditorInfo.innerHTML = `
+            <p><strong>Editor:</strong> ${editorInfo.editor}</p>
+            <p><strong>Fecha de Edición:</strong> ${editorInfo.date}</p>
+        `;
+    }
 }
 
 function updateUserManagement() {
@@ -118,13 +156,39 @@ function saveEdit() {
     if (editArea.trim() === '') return alert('No puedes guardar un cambio vacío.');
 
     const article = articles[currentArticleIndex];
+    
+    // Guardar la versión actual en el historial
     article.history.push(article.content);
+    
+    // Guardar información del editor para esta versión
+    article.editorHistory.push({
+        editor: currentUser.username,
+        date: new Date().toLocaleString()
+    });
+    
+    // Actualizar el contenido
     article.content = editArea;
 
     saveData();
     document.getElementById('mainEditor').value = article.content;
     alert('Edición guardada exitosamente.');
     updateVersionSelect();
+}
+
+function viewVersion() {
+    const versionSelect = document.getElementById('versionSelect');
+    const selectedVersion = versionSelect.value;
+
+    if (selectedVersion === 'current') {
+        // Mostrar versión actual
+        document.getElementById('mainEditor').value = articles[currentArticleIndex].content;
+    } else {
+        // Mostrar versión del historial
+        document.getElementById('mainEditor').value = articles[currentArticleIndex].history[selectedVersion];
+    }
+
+    // Mostrar información del editor de la versión
+    showVersionEditorInfo(selectedVersion);
 }
 
 function proposeEdit() {
@@ -134,15 +198,6 @@ function proposeEdit() {
     }
 
     alert('Tu propuesta de edición ha sido enviada para revisión.');
-}
-
-function viewVersion() {
-    const versionSelect = document.getElementById('versionSelect');
-    const selectedVersion = versionSelect.value;
-
-    if (selectedVersion !== '') {
-        document.getElementById('mainEditor').value = articles[currentArticleIndex].history[selectedVersion];
-    }
 }
 
 function searchArticles() {
@@ -177,7 +232,13 @@ function createSection() {
         return;
     }
 
-    articles.push({ title: sectionTitle, content: sectionContent, author: currentUser.username, history: [] });
+    articles.push({ 
+        title: sectionTitle, 
+        content: sectionContent, 
+        author: currentUser.username, 
+        history: [],
+        editorHistory: [] 
+    });
     saveData();
     alert('Nuevo apartado creado exitosamente.');
 }
@@ -187,7 +248,7 @@ function banUser() {
     const selectedUser = users.find(u => u.username === userManagement.value);
 
     if (selectedUser) {
-        if (selectedUser.username === 'pgsystems') {
+        if (selectedUser.username === 'admin') {
             alert('No puedes banear al usuario administrador principal.');
             return;
         }
