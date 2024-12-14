@@ -25,7 +25,7 @@ input, textarea, select {
 }
 
 .button {
-    background-color: #3366cc;
+    background-color: #ff7514;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -35,7 +35,7 @@ input, textarea, select {
 }
 
 .button:hover {
-    background-color: #254ea0;
+    background-color: #ff7000;
 }
 
 .error {
