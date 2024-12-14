@@ -187,9 +187,6 @@ function banUser() {
     const selectedUser = users.find(u => u.username === userManagement.value);
 
     if (selectedUser) {
-        selectedUser.banned = true;
-        saveData();
-        alert(`${selectedUser.username} ha sido baneado.`);
         if (selectedUser.username === 'pgsystems') {
             alert('No puedes banear al usuario administrador principal.');
             return;
