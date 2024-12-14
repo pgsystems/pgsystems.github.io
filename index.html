@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>TechnoWiki - Colaboración y Conocimiento</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f6f6f6;
+            line-height: 1.6;
+        }
+        #loginContainer {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 30px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        #editorSection, #adminPanel, #searchSection, #createSection {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .button {
+            background-color: #3366cc;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .button:hover {
+            background-color: #254ea0;
+        }
+        .error {
+            color: red;
+            margin-bottom: 15px;
+        }
+        #historyPanel {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .admin-button {
+            background-color: #d9534f;
+            color: white;
+        }
+        .admin-button:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+    <div id="loginContainer">
+        <h2>TechnoWiki</h2>
+        <div id="loginError" class="error"></div>
+        <input type="text" id="username" placeholder="Nombre de usuario">
+        <input type="password" id="password" placeholder="Contraseña">
+        <button class="button" onclick="login()">Iniciar Sesión</button>
+        <button class="button" onclick="register()">Registrarse</button>
+        <button class="button" onclick="enterAsGuest()">Entrar como Invitado</button>
+    </div>
+
+    <div id="editorSection" style="display:none;">
+        <div id="userInfo"></div>
+
+        <h2>Contenido del Artículo</h2>
+        <textarea id="mainEditor" rows="10" readonly></textarea>
+
+        <div id="editorControls" style="display:none;">
+            <textarea id="editArea" rows="10" placeholder="Escribe tu edición aquí..."></textarea>
+            <button class="button" onclick="saveEdit()">Guardar Edición</button>
+            <button class="button" onclick="proposeEdit()">Proponer Edición</button>
+        </div>
+
+        <div id="historyPanel">
+            <h3>Historial de Versiones</h3>
+            <select id="versionSelect" onchange="viewVersion()"></select>
+        </div>
+
+        <div id="adminPanel" style="display:none;">
+            <h3>Panel de Administración</h3>
+            <select id="userManagement"></select>
+            <button class="button admin-button" onclick="banUser()">Banear Usuario</button>
+            <button class="button admin-button" onclick="promoteUser()">Promover Usuario</button>
+            <button class="button admin-button" onclick="changeRole()">Cambiar Rol</button>
+        </div>
+
+        <div id="searchSection">
+            <h3>Buscar Artículos</h3>
+            <input type="text" id="searchInput" placeholder="Buscar...">
+            <button class="button" onclick="searchArticles()">Buscar</button>
+            <div id="searchResults"></div>
+        </div>
+
+        <div id="createSection" style="display:none;">
+            <h3>Crear Nuevo Apartado</h3>
+            <input type="text" id="sectionTitle" placeholder="Título del Apartado">
+            <textarea id="sectionContent" rows="5" placeholder="Contenido del Apartado"></textarea>
+            <button class="button" onclick="createSection()">Crear Apartado</button>
+        </div>
+
+        <button class="button" onclick="logout()">Cerrar Sesión</button>
+    </div>
+
+    <script>
+        // Add your JavaScript code here (from the previous code snippet)
+    </script>
+</body>
+</html>
