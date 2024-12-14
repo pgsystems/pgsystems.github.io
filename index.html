@@ -3,62 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechnoWiki - El Verdadero Conocimiento de la Programación</title>
+    <title>TechnoWiki</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="png_pequeño.png" type="image/png">
+    <link rel="icon" href="icon.png" type="image/png">
 </head>
 <body>
-    <div id="loginContainer">
-        <h2>TechnoWiki</h2>
-        <div id="loginError" class="error"></div>
-        <input type="text" id="username" placeholder="Nombre de usuario">
-        <input type="password" id="password" placeholder="Contraseña">
-        <button class="button" onclick="login()">Iniciar Sesión</button>
-        <button class="button" onclick="register()">Registrarse</button>
-        <button class="button" onclick="enterAsGuest()">Entrar como Invitado</button>
-    </div>
+    <div id="app">
+        <header>
+            <h1>TechnoWiki</h1>
+            <nav>
+                <button onclick="showSection('adminPanel')">Panel de Administración</button>
+                <button onclick="showSection('editor')">Editor</button>
+                <button onclick="showSection('viewer')">Ver Artículos</button>
+                <button onclick="showSection('create')">Crear Artículo</button>
+            </nav>
+        </header>
 
-    <div id="editorSection" style="display:none;">
-        <div id="userInfo"></div>
+        <main>
+            <!-- Panel de Administración -->
+            <section id="adminPanel" class="hidden">
+                <h2>Panel de Administración</h2>
+                <p>Gestión de usuarios y roles.</p>
+            </section>
 
-        <h2>Contenido del Artículo</h2>
-        <textarea id="mainEditor" rows="10" readonly></textarea>
+            <!-- Editor de Artículos -->
+            <section id="editor" class="hidden">
+                <h2>Editor</h2>
+                <textarea id="editContent" rows="10"></textarea>
+                <button onclick="saveArticle()">Guardar Cambios</button>
+            </section>
 
-        <div id="editorControls" style="display:none;">
-            <textarea id="editArea" rows="10" placeholder="Escribe tu edición aquí..."></textarea>
-            <button class="button" onclick="saveEdit()">Guardar</button>
-            <button class="button" onclick="proposeEdit()">Proponer</button>
-        </div>
+            <!-- Vista de Artículos -->
+            <section id="viewer" class="hidden">
+                <h2>Lista de Artículos</h2>
+                <ul id="articles">
+                    <!-- Los artículos se cargarán aquí dinámicamente -->
+                </ul>
+                <div id="articleDetails">
+                    <h3 id="articleTitle">Título del Artículo</h3>
+                    <p id="articleContent">Selecciona un artículo para ver su contenido.</p>
+                </div>
+            </section>
 
-        <div id="historyPanel">
-            <h3>Historial de Versiones</h3>
-            <select id="versionSelect" onchange="viewVersion()"></select>
-        </div>
-
-        <div id="adminPanel" style="display:none;">
-            <h3>Panel de Administración</h3>
-            <select id="userManagement"></select>
-            <button class="button admin-button" onclick="banUser()">Banear</button>
-            <button class="button admin-button" onclick="promoteUser()">Ascender</button>
-            <button class="button admin-button" onclick="changeRole()">Cambiar Rol</button>
-            <button class="button admin-button" onclick="delUser()">Eliminar usuario</button>
-        </div>
-
-        <div id="searchSection">
-            <h3>Buscar Artículos</h3>
-            <input type="text" id="searchInput" placeholder="Buscar...">
-            <button class="button" onclick="searchArticles()">Buscar</button>
-            <div id="searchResults"></div>
-        </div>
-
-        <div id="createSection" style="display:none;">
-            <h3>Crear Nuevo Apartado</h3>
-            <input type="text" id="sectionTitle" placeholder="Título del Apartado">
-            <textarea id="sectionContent" rows="5" placeholder="Contenido del Apartado"></textarea>
-            <button class="button" onclick="createSection()">Crear Apartado</button>
-        </div>
-
-        <button class="button" onclick="logout()">Cerrar Sesión</button>
+            <!-- Crear Nuevo Artículo -->
+            <section id="create" class="hidden">
+                <h2>Crear Artículo</h2>
+                <input type="text" id="newTitle" placeholder="Título del Artículo">
+                <textarea id="newContent" rows="5" placeholder="Contenido del Artículo"></textarea>
+                <button onclick="createArticle()">Crear Artículo</button>
+            </section>
+        </main>
     </div>
 
     <script src="script.js"></script>
