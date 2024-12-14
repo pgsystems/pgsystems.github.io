@@ -6,7 +6,7 @@ const ROLES = {
 };
 
 let users = JSON.parse(localStorage.getItem('users')) || [
-    { username: 'admin', password: 'admin123', role: ROLES.ADMIN, banned: false },
+    { username: 'pgsystems', password: 'Coco8520', role: ROLES.ADMIN, banned: false },
 ];
 
 let articles = JSON.parse(localStorage.getItem('articles')) || [
