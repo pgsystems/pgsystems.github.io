@@ -6,7 +6,7 @@ const ROLES = {
 };
 
 let users = JSON.parse(localStorage.getItem('users')) || [
-
+    { username: 'admin', password: 'admin123', role: ROLES.ADMIN, banned: false },
 ];
 
 let articles = JSON.parse(localStorage.getItem('articles')) || [
@@ -187,15 +187,9 @@ function banUser() {
     const selectedUser = users.find(u => u.username === userManagement.value);
 
     if (selectedUser) {
-        if (selectedUser.username === 'pgsystems') {
-            alert('No puedes banear al usuario administrador principal.');
-            return;
-        }
-        else {
-            selectedUser.banned = true;
-            saveData();
-            alert(`${selectedUser.username} ha sido baneado.`);
-        }
+        selectedUser.banned = true;
+        saveData();
+        alert(`${selectedUser.username} ha sido baneado.`);
     }
 }
 
@@ -226,6 +220,7 @@ function changeRole() {
         }
     }
 }
+
 function delUser() {
     // Solo los administradores pueden eliminar usuarios
     if (currentUser.role !== ROLES.ADMIN) {
