@@ -5,6 +5,10 @@ const ROLES = {
     ADMIN: 3
 };
 
+let users = JSON.parse(localStorage.getItem('users')) || [
+
+];
+
 let articles = JSON.parse(localStorage.getItem('articles')) || [
     { title: 'Bienvenido', content: 'Bienvenido a TechnoWiki.', author: 'admin', history: [] }
 ];
@@ -183,11 +187,13 @@ function banUser() {
     const selectedUser = users.find(u => u.username === userManagement.value);
 
     if (selectedUser) {
+        selectedUser.banned = true;
+        saveData();
+        alert(`${selectedUser.username} ha sido baneado.`);
         if (selectedUser.username === 'pgsystems') {
             alert('No puedes banear al usuario administrador principal.');
             return;
         }
-
         else {
             selectedUser.banned = true;
             saveData();
@@ -223,36 +229,30 @@ function changeRole() {
         }
     }
 }
-
 function delUser() {
     // Solo los administradores pueden eliminar usuarios
     if (currentUser.role !== ROLES.ADMIN) {
         alert('No tienes permisos para eliminar usuarios.');
         return;
     }
-
     const userManagement = document.getElementById('userManagement');
     const selectedUsername = userManagement.value;
     const selectedUser = users.find(u => u.username === selectedUsername);
-
     // Validaciones para evitar eliminar usuarios 
     if (!selectedUser) {
         alert('Usuario no encontrado.');
         return;
     }
-
     // No se puede eliminar al usuario actual
     if (selectedUser.username === currentUser.username) {
         alert('No puedes eliminarte a ti mismo.');
         return;
     }
-
     // No se puede eliminar al usuario admin por defecto
     if (selectedUser.username === 'pgsystems') {
         alert('No puedes eliminar al usuario administrador principal.');
         return;
     }
-
     // Confirmación para eliminar usuario
     const confirmDelete = confirm(`¿Estás seguro de que deseas eliminar al usuario ${selectedUsername}?`);
     
