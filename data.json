@@ -1,5 +1,9 @@
 {
     "articles": [
-        { "title": "Bienvenido a TechnoWiki", "content": "Este es el primer artículo de ejemplo." }
+        { "title": "Primer Artículo", "content": "Bienvenido a TechnoWiki." }
+    ],
+    "users": [
+        { "username": "pgsystems" },
+        { "username": "elb4liron" }
     ]
 }
