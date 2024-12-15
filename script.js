@@ -1,24 +1,21 @@
-async function fetchJSON(url, method = "GET", body = null) {
-    const options = { method, headers: { "Content-Type": "application/json" } };
-    if (body) options.body = JSON.stringify(body);
-    const response = await fetch(url, options);
-    return await response.json();
-}
-
-// Load articles from the server
-async function loadArticles() {
-    const articlesPanel = document.getElementById("articlesPanel");
-    articlesPanel.style.display = "block";
+// Cambiar entre paneles
+function showPanel(panelId) {
+    document.getElementById("homePanel").style.display = "none";
     document.getElementById("createPanel").style.display = "none";
     document.getElementById("adminPanel").style.display = "none";
+    document.getElementById(panelId).style.display = "block";
+}
 
+// Cargar artículos desde el backend
+async function loadArticles() {
     const articles = await fetchJSON("/articles");
-    articlesPanel.innerHTML = articles
+    const articlesList = document.getElementById("articlesList");
+    articlesList.innerHTML = articles
         .map(article => `<div><h3>${article.title}</h3><p>${article.content}</p></div>`)
         .join("");
 }
 
-// Create a new article
+// Crear nuevo artículo
 async function createArticle() {
     const title = document.getElementById("articleTitle").value;
     const content = document.getElementById("articleContent").value;
@@ -28,26 +25,27 @@ async function createArticle() {
         return;
     }
 
-    const result = await fetchJSON("/articles", "POST", { title, content });
-    if (result.success) {
+    const response = await fetchJSON("/articles", "POST", { title, content });
+    if (response.success) {
         alert("Artículo creado exitosamente.");
+        showPanel("homePanel");
         loadArticles();
     }
 }
 
-// Show/hide panels
-function showCreatePanel() {
-    document.getElementById("createPanel").style.display = "block";
-    document.getElementById("articlesPanel").style.display = "none";
-    document.getElementById("adminPanel").style.display = "none";
+// Fetch Helper
+async function fetchJSON(url, method = "GET", body = null) {
+    const options = { method, headers: { "Content-Type": "application/json" } };
+    if (body) options.body = JSON.stringify(body);
+    const response = await fetch(url, options);
+    return response.json();
 }
 
-function showAdminPanel() {
-    document.getElementById("adminPanel").style.display = "block";
-    document.getElementById("articlesPanel").style.display = "none";
-    document.getElementById("createPanel").style.display = "none";
-}
-
-function logout() {
-    alert("Sesión cerrada.");
+// Cargar usuarios
+async function loadUsers() {
+    const users = await fetchJSON("/users");
+    const usersList = document.getElementById("usersList");
+    usersList.innerHTML = users
+        .map(user => `<div>${user.username}</div>`)
+        .join("");
 }
