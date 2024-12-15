@@ -1,44 +1,68 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f6f6f6;
-    line-height: 1.6;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
 }
 
-#loginContainer, #editorSection, #adminPanel, #searchSection, #createSection {
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav button {
     background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    padding: 20px;
-    margin-top: 20px;
+    color: #4CAF50;
+    border: 1px solid #4CAF50;
+    padding: 8px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-input, textarea, select {
+nav button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+main {
+    padding: 20px;
+}
+
+#articlesPanel, #createPanel, #adminPanel {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+input, textarea {
     width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
+    margin: 10px 0;
     border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
+    border-radius: 5px;
 }
 
-.button {
-    background-color: #ff7514;
+button {
+    background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
+    padding: 10px 20px;
     cursor: pointer;
-    margin-right: 10px;
+    border-radius: 5px;
 }
 
-.button:hover {
-    background-color: #ff7000;
-}
-
-.error {
-    color: red;
-    margin-bottom: 15px;
+button:hover {
+    background-color: #45a049;
 }
