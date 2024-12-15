@@ -3,33 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechnoWiki</title>
+    <title>TechnoWiki - El Verdadero Conocimiento de la Programación</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="icon.png" type="image/png">
+    <link rel="icon" href="png_pequeño.png" type="image/png">
 </head>
 <body>
     <header>
         <h1>TechnoWiki</h1>
         <nav>
-            <button onclick="loadArticles()">Artículos</button>
-            <button onclick="showCreatePanel()">Crear Artículo</button>
-            <button onclick="showAdminPanel()">Panel de Admin</button>
-            <button onclick="logout()">Cerrar Sesión</button>
+            <button id="btnHome" onclick="showPanel('homePanel')">Inicio</button>
+            <button id="btnCreate" onclick="showPanel('createPanel')">Crear Artículo</button>
+            <button id="btnAdmin" onclick="showPanel('adminPanel')">Panel de Admin</button>
         </nav>
     </header>
 
     <main>
-        <section id="articlesPanel"></section>
+        <section id="homePanel">
+            <h2>Artículos Recientes</h2>
+            <div id="articlesList"></div>
+        </section>
+
         <section id="createPanel" style="display: none;">
-            <h2>Crear un nuevo artículo</h2>
+            <h2>Crear Artículo</h2>
             <input type="text" id="articleTitle" placeholder="Título del artículo">
             <textarea id="articleContent" placeholder="Contenido del artículo"></textarea>
-            <button onclick="createArticle()">Guardar</button>
+            <button onclick="createArticle()">Guardar Artículo</button>
         </section>
+
         <section id="adminPanel" style="display: none;">
             <h2>Panel de Administración</h2>
-            <button onclick="loadUsers()">Cargar Usuarios</button>
-            <div id="usersList"></div>
+            <div id="adminActions">
+                <button onclick="loadUsers()">Cargar Usuarios</button>
+                <div id="usersList"></div>
+            </div>
         </section>
     </main>
 
