@@ -1,66 +1,41 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechnoWiki - El Verdadero Conocimiento de la Programación</title>
+    <title>TechnoWiki</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="png_pequeño.png" type="image/png">
+    <link rel="icon" href="icon.png" type="image/png">
 </head>
 <body>
-    <div id="loginContainer">
-        <h2>TechnoWiki</h2>
-        <div id="loginError" class="error"></div>
-        <input type="text" id="username" placeholder="Nombre de usuario">
-        <input type="password" id="password" placeholder="Contraseña">
-        <button class="button" onclick="login()">Iniciar Sesión</button>
-        <button class="button" onclick="register()">Registrarse</button>
-        <button class="button" onclick="enterAsGuest()">Entrar como Invitado</button>
-    </div>
+    <header>
+        <h1>TechnoWiki</h1>
+        <nav>
+            <button onclick="loadArticles()">Artículos</button>
+            <button onclick="showCreatePanel()">Crear Artículo</button>
+            <button onclick="showAdminPanel()">Panel de Admin</button>
+            <button onclick="logout()">Cerrar Sesión</button>
+        </nav>
+    </header>
 
-    <div id="editorSection" style="display:none;">
-        <div id="userInfo"></div>
+    <main>
+        <section id="articlesPanel"></section>
+        <section id="createPanel" style="display: none;">
+            <h2>Crear un nuevo artículo</h2>
+            <input type="text" id="articleTitle" placeholder="Título del artículo">
+            <textarea id="articleContent" placeholder="Contenido del artículo"></textarea>
+            <button onclick="createArticle()">Guardar</button>
+        </section>
+        <section id="adminPanel" style="display: none;">
+            <h2>Panel de Administración</h2>
+            <button onclick="loadUsers()">Cargar Usuarios</button>
+            <div id="usersList"></div>
+        </section>
+    </main>
 
-        <h2>Contenido del Artículo</h2>
-        <textarea id="mainEditor" rows="10" readonly></textarea>
-
-        <div id="editorControls" style="display:none;">
-            <textarea id="editArea" rows="10" placeholder="Escribe tu edición aquí..."></textarea>
-            <button class="button" onclick="saveEdit()">Guardar</button>
-            <button class="button" onclick="proposeEdit()">Proponer</button>
-        </div>
-
-        <div id="historyPanel">
-            <h3>Historial de Versiones</h3>
-            <select id="versionSelect" onchange="viewVersion()"></select>
-        </div>
-
-        <div id="adminPanel" style="display:none;">
-            <h3>Panel de Administración</h3>
-            <select id="userManagement"></select>
-            <button class="button admin-button" onclick="banUser()">Banear</button>
-            <button class="button admin-button" onclick="promoteUser()">Ascender</button>
-            <button class="button admin-button" onclick="changeRole()">Cambiar Rol</button>
-            <button class="button admin-button" onclick="delUser()">Eliminar usuario</button>
-        </div>
-
-        <div id="searchSection">
-            <h3>Buscar Artículos</h3>
-            <input type="text" id="searchInput" placeholder="Buscar...">
-            <button class="button" onclick="searchArticles()">Buscar</button>
-            <div id="searchResults"></div>
-        </div>
-
-        <div id="createSection" style="display:none;">
-            <h3>Crear Nuevo Apartado</h3>
-            <input type="text" id="sectionTitle" placeholder="Título del Apartado">
-            <textarea id="sectionContent" rows="5" placeholder="Contenido del Apartado"></textarea>
-            <button class="button" onclick="createSection()">Crear Apartado</button>
-        </div>
-
-        <button class="button" onclick="logout()">Cerrar Sesión</button>
-    </div>
+    <footer>
+        <p>&copy; 2024 TechnoWiki</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
