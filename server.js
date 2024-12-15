@@ -3,7 +3,7 @@ const fs = require("fs");
 
 const app = express();
 const PORT = 3000;
-const DATA_PATH = "./server/data.json";
+const DATA_PATH = "data.json";
 
 app.use(express.json());
 app.use(express.static("public"));
