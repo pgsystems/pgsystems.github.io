@@ -8,7 +8,7 @@ body {
 
 .container {
     display: flex;
-    flex-direction: column;
+    flex-direction: center;
     align-items: center;
     justify-content: center;
     border: 1px solid rgb(100, 100, 100); /* Define el borde */
