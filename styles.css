@@ -1,4 +1,7 @@
 body {
+    display: flex; /* Hacemos que el body sea un contenedor Flex */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
@@ -18,6 +21,7 @@ body {
     width: 1000px; /* Ancho del contenedor */
     text-align: center; /* Centra el texto dentro del contenedor */
     background-color: rgb(216, 216, 216);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
