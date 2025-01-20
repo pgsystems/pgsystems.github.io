@@ -147,6 +147,21 @@ function processInput(input, context, conversationId) {
         agradecimiento: "Siempre un placer ayudarte. ¿Algo más en lo que pueda colaborar?"
     };
 
+    if (respuestas[input.toLowerCase()]) {
+        return respuestas[input.toLowerCase()];
+    }
+
+    if (input.startsWith("calcula")) {
+        const expression = input.replace("calcula", "").trim();
+        try {
+            const result = eval(expression);
+            return `El resultado de ${expression} es ${result}.`;
+        } catch (error) {
+            return "Lo siento, no pude calcular eso. Asegúrate de que la expresión es válida.";
+        }
+    }
+
+
     // Si hay un contexto relevante, devuelve una respuesta contextual
     if (context in contextResponses) {
         return contextResponses[context];
