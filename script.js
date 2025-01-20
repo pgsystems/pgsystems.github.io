@@ -139,8 +139,6 @@ function processInput(input, context, conversationId) {
         "¿qué es la inteligencia artificial estrecha?": "La inteligencia artificial estrecha es un tipo de inteligencia artificial que está diseñada para realizar una tarea específica o un conjunto limitado de tareas.",
         "¿qué es la robótica?": "La robótica es una rama de la ingeniería que se ocupa del diseño, construcción, operación y uso de robots.",
         "¿qué es un robot?": "Un robot es una máquina programable capaz de realizar una serie de acciones automáticamente o con mínima intervención humana.",
-        "¿cómo me llamo?": "Te llamas" + userName,
-        "¿cúal es mi nombre?": "Tu maravilloso nombre es" + userName,
         "pgsystems": "[PG] Systems es la empresa de informática y tecnología que está detrás de mí y cada día me ofrece más conocimiento. La empresa fue fundada en 2020. Su origen es español.",
         "¿qué es pgsystems?": "[PG] Systems es la empresa de informática y tecnología que está detrás de mí y cada día me ofrece más conocimiento. La empresa fue fundada en 2020. Su origen es español.",
         "¿qué hacen en pgsystems?": "[PG] Systems es la empresa de informática y tecnología que está detrás de mí y cada día me ofrece más conocimiento. La empresa fue fundada en 2020. Su origen es español.",
