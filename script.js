@@ -141,6 +141,12 @@ function processInput(input, context, conversationId) {
         "¿qué es un robot?": "Un robot es una máquina programable capaz de realizar una serie de acciones automáticamente o con mínima intervención humana.",
         "¿cómo me llamo?": "Te llamas" + userName,
         "¿cúal es mi nombre?": "Tu maravilloso nombre es" + userName,
+        "pgsystems": "[PG] Systems es la empresa de informática y tecnología que está detrás de mí y cada día me ofrece más conocimiento. La empresa fue fundada en 2020. Su origen es español.",
+        "¿qué es pgsystems?": "[PG] Systems es la empresa de informática y tecnología que está detrás de mí y cada día me ofrece más conocimiento. La empresa fue fundada en 2020. Su origen es español.",
+        "¿qué hacen en pgsystems?": "[PG] Systems es la empresa de informática y tecnología que está detrás de mí y cada día me ofrece más conocimiento. La empresa fue fundada en 2020. Su origen es español.",
+        "¿quién fundó pgsystems": "[PG] Systems fue fundada en 2020 por Álvaro García, actualmente con 12 años.",
+        "¿cuándo fue fundada pgsystems": "[PG] Systems fue fundada en 2020 por Álvaro García, actualmente con 12 años.",
+        "¿cuándo se fundó pgsystems?": "[PG] Systems fue fundada en 2020 por Álvaro García, actualmente con 12 años.",
     };
 
     const contextResponses = {
