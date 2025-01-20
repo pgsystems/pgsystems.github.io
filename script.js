@@ -241,3 +241,14 @@ function loadChatHistory(conversationId) {
     });
     chatBox.scrollTop = chatBox.scrollHeight;
 }
+
+// Selecciona el botón por su ID
+  const clearButton = document.getElementById('clearLocalStorage');
+
+  // Añade un evento para el clic
+  clearButton.addEventListener('click', () => {
+    // Elimina todos los datos del localStorage
+    localStorage.clear();
+    // Opcional: Muestra una alerta o mensaje de confirmación
+    alert('Los datos de pgAI almacenados en el localStorage han sido eliminados.');
+  });
