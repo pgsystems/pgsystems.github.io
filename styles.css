@@ -83,3 +83,7 @@ button:hover {
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+.clearLocalStorage {
+    background-color: red;
+}
