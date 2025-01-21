@@ -139,6 +139,7 @@ function processInput(input, context, conversationId) {
         "¿qué es la inteligencia artificial estrecha?": "La inteligencia artificial estrecha es un tipo de inteligencia artificial que está diseñada para realizar una tarea específica o un conjunto limitado de tareas.",
         "¿qué es la robótica?": "La robótica es una rama de la ingeniería que se ocupa del diseño, construcción, operación y uso de robots.",
         "¿qué es un robot?": "Un robot es una máquina programable capaz de realizar una serie de acciones automáticamente o con mínima intervención humana.",
+        "que": "so",
     };
 
     const contextResponses = {
